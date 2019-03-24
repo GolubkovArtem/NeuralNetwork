@@ -3,15 +3,15 @@
 #pragma once
 
 float activation_function_1(float network_input);
-// функция возвращает значение логистической ФА от network_input
+// С„СѓРЅРєС†РёСЏ РІРѕР·РІСЂР°С‰Р°РµС‚ Р·РЅР°С‡РµРЅРёРµ Р»РѕРіРёСЃС‚РёС‡РµСЃРєРѕР№ Р¤Рђ РѕС‚ network_input
 float derivative_function_1(float network_input);
-// функция возвращает значение производной логистической ФА от network_input
+// С„СѓРЅРєС†РёСЏ РІРѕР·РІСЂР°С‰Р°РµС‚ Р·РЅР°С‡РµРЅРёРµ РїСЂРѕРёР·РІРѕРґРЅРѕР№ Р»РѕРіРёСЃС‚РёС‡РµСЃРєРѕР№ Р¤Рђ РѕС‚ network_input
 std::vector<std::vector<float>> get_combinations(float collection_size, float selected_number);
-// функция возвращает все сочетания в лексикографическом порядке из collection_size по selected_number 
-// в виде двузначного числа из collection_size разрядов, старший разряд всегда равен 1
+// С„СѓРЅРєС†РёСЏ РІРѕР·РІСЂР°С‰Р°РµС‚ РІСЃРµ СЃРѕС‡РµС‚Р°РЅРёСЏ РІ Р»РµРєСЃРёРєРѕРіСЂР°С„РёС‡РµСЃРєРѕРј РїРѕСЂСЏРґРєРµ РёР· collection_size РїРѕ selected_number 
+// РІ РІРёРґРµ РґРІСѓР·РЅР°С‡РЅРѕРіРѕ С‡РёСЃР»Р° РёР· collection_size СЂР°Р·СЂСЏРґРѕРІ, СЃС‚Р°СЂС€РёР№ СЂР°Р·СЂСЏРґ РІСЃРµРіРґР° СЂР°РІРµРЅ 1
 std::vector<float> GetSample(size_t dimension, size_t sample_number);
-// функция возвращает двоичную запись из dimension + 1 знаков числа 2 * sample_number + 1
+// С„СѓРЅРєС†РёСЏ РІРѕР·РІСЂР°С‰Р°РµС‚ РґРІРѕРёС‡РЅСѓСЋ Р·Р°РїРёСЃСЊ РёР· dimension + 1 Р·РЅР°РєРѕРІ С‡РёСЃР»Р° 2 * sample_number + 1
 void find_minimal_number_of_samples(size_t dimension, Perceptron & perceptron,
 	const std::vector<std::pair<std::vector<float>, float>> & learning_samples);
-// функция выводит в консоль минимальное кол-во наборов из learning_samples, а также эти наборы
-// необходимые для обучения perceptron с dimension двоичных входов
+// С„СѓРЅРєС†РёСЏ РІС‹РІРѕРґРёС‚ РІ РєРѕРЅСЃРѕР»СЊ РјРёРЅРёРјР°Р»СЊРЅРѕРµ РєРѕР»-РІРѕ РЅР°Р±РѕСЂРѕРІ РёР· learning_samples, Р° С‚Р°РєР¶Рµ СЌС‚Рё РЅР°Р±РѕСЂС‹
+// РЅРµРѕР±С…РѕРґРёРјС‹Рµ РґР»СЏ РѕР±СѓС‡РµРЅРёСЏ perceptron СЃ dimension РґРІРѕРёС‡РЅС‹С… РІС…РѕРґРѕРІ

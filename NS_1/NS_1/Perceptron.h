@@ -1,15 +1,15 @@
 #include "vector"
 #pragma once
 
-float activation_function(float network_input); // функция возвращает значение пороговой ФА от network_input
-float derivative_function(float network_input); // функция возвращает значение производной пороговой ФА от network_input
+float activation_function(float network_input); // С„СѓРЅРєС†РёСЏ РІРѕР·РІСЂР°С‰Р°РµС‚ Р·РЅР°С‡РµРЅРёРµ РїРѕСЂРѕРіРѕРІРѕР№ Р¤Рђ РѕС‚ network_input
+float derivative_function(float network_input); // С„СѓРЅРєС†РёСЏ РІРѕР·РІСЂР°С‰Р°РµС‚ Р·РЅР°С‡РµРЅРёРµ РїСЂРѕРёР·РІРѕРґРЅРѕР№ РїРѕСЂРѕРіРѕРІРѕР№ Р¤Рђ РѕС‚ network_input
 
 class Perceptron {
 private:
-	std::vector<float> Weights; // веса нейрона
+	std::vector<float> Weights; // РІРµСЃР° РЅРµР№СЂРѕРЅР°
 	float LearningRate;
-	float(*ActivationFunction)(float); // указатель на функцию расчёта функции активации
-	float(*DerivativeFunction)(float); // указатель на функцию расчёта производной функции активации
+	float(*ActivationFunction)(float); // СѓРєР°Р·Р°С‚РµР»СЊ РЅР° С„СѓРЅРєС†РёСЋ СЂР°СЃС‡С‘С‚Р° С„СѓРЅРєС†РёРё Р°РєС‚РёРІР°С†РёРё
+	float(*DerivativeFunction)(float); // СѓРєР°Р·Р°С‚РµР»СЊ РЅР° С„СѓРЅРєС†РёСЋ СЂР°СЃС‡С‘С‚Р° РїСЂРѕРёР·РІРѕРґРЅРѕР№ С„СѓРЅРєС†РёРё Р°РєС‚РёРІР°С†РёРё
 public:
 	~Perceptron() = default;
 	Perceptron() = delete;
@@ -17,15 +17,15 @@ public:
 		float learning_rate = 0.3,
 		float(*activation_function)(float) = activation_function,
 		float(*derivative_function)(float) = derivative_function);
-	void Clear(); // метод очищает веса нейрона
+	void Clear(); // РјРµС‚РѕРґ РѕС‡РёС‰Р°РµС‚ РІРµСЃР° РЅРµР№СЂРѕРЅР°
 	std::pair<bool, std::vector<float>>
 		TrainPerceptron(const std::vector<std::pair<std::vector<float>, float>> & learning_samples,
-			bool show_results = false, size_t epochs_number = 200); // метод обучет нейрон на обучающей выборке learning_samples
-	// не более чем за epochs_number эпох и в случае show_results пошагово выводит результаты эпох обучения 
-	// метод возвращает пару значений: результат обучения и веса нейрона
+			bool show_results = false, size_t epochs_number = 200); // РјРµС‚РѕРґ РѕР±СѓС‡РµС‚ РЅРµР№СЂРѕРЅ РЅР° РѕР±СѓС‡Р°СЋС‰РµР№ РІС‹Р±РѕСЂРєРµ learning_samples
+	// РЅРµ Р±РѕР»РµРµ С‡РµРј Р·Р° epochs_number СЌРїРѕС… Рё РІ СЃР»СѓС‡Р°Рµ show_results РїРѕС€Р°РіРѕРІРѕ РІС‹РІРѕРґРёС‚ СЂРµР·СѓР»СЊС‚Р°С‚С‹ СЌРїРѕС… РѕР±СѓС‡РµРЅРёСЏ 
+	// РјРµС‚РѕРґ РІРѕР·РІСЂР°С‰Р°РµС‚ РїР°СЂСѓ Р·РЅР°С‡РµРЅРёР№: СЂРµР·СѓР»СЊС‚Р°С‚ РѕР±СѓС‡РµРЅРёСЏ Рё РІРµСЃР° РЅРµР№СЂРѕРЅР°
 	bool VerifyPerceptron(const std::vector<std::pair<std::vector<float>, float>> & training_samples) const;
-	// метод проверяет нейрон на тестовой выборке training_samples и возвращает результат проверки
+	// РјРµС‚РѕРґ РїСЂРѕРІРµСЂСЏРµС‚ РЅРµР№СЂРѕРЅ РЅР° С‚РµСЃС‚РѕРІРѕР№ РІС‹Р±РѕСЂРєРµ training_samples Рё РІРѕР·РІСЂР°С‰Р°РµС‚ СЂРµР·СѓР»СЊС‚Р°С‚ РїСЂРѕРІРµСЂРєРё
 private:
-	void _WeightingRecalculation(float mistake, const std::vector<float> & sample); // метод проводит перерасчёт весов нейрона
-	float _NetworkInput(const std::vector<float> & sample) const; // метод возвращает сетевой вход для набора sample
+	void _WeightingRecalculation(float mistake, const std::vector<float> & sample); // РјРµС‚РѕРґ РїСЂРѕРІРѕРґРёС‚ РїРµСЂРµСЂР°СЃС‡С‘С‚ РІРµСЃРѕРІ РЅРµР№СЂРѕРЅР°
+	float _NetworkInput(const std::vector<float> & sample) const; // РјРµС‚РѕРґ РІРѕР·РІСЂР°С‰Р°РµС‚ СЃРµС‚РµРІРѕР№ РІС…РѕРґ РґР»СЏ РЅР°Р±РѕСЂР° sample
 };
